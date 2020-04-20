@@ -14,6 +14,25 @@
 * Compare DE results to miRNA results
 
 
+## Using ShortStack
+* get from conda
+* test out with one library
+
+## mirDeep-P2
+* download code
+* need to preprocess the reads - collapse repeated reads
+  * use fastx-toolkit to get readname-readcount
+* Run process
+
+## General counts
+* divide genome into 500bp chunks
+* Run bowtie (or use results from ShortStack)
+* Use a feature-counter to get readcounts in each window
+
+
+
+
+
 
 
 ## JGI uses ShortStack
@@ -87,6 +106,53 @@ cmpress Rfam.cm
 
 # continue with Userguide pg. 27 and 28
 
+# look at prepped file
+# 
+
+# convert fastq to fasta
+module load python/3.7-anaconda-2019.07
+source activate seqtk_env
+cd /global/cscratch1/sd/grabowsp/CamSat_smRNA/Cs_smRNA_preps/GGACY_1
+gunzip -c GGACY_1.prepped.fastq.gz | head -4000 | seqtk seq -A - > \
+GGACY_1_short.fasta 
+
+gunzip -c GGACY_1.prepped.fastq.gz | seqtk seq -A - > \
+GGACY_1.fasta
+
+source activate infernal_rfam
+cd /global/cscratch1/sd/grabowsp/CamSat_smRNA/infernal_filtering
+cmscan --rfam --cut_ga --nohmmonly --tblout GGACY_1_short.tblout --fmt 2 \
+--clanin Rfam.14.1.clanin Rfam.cm \
+/global/cscratch1/sd/grabowsp/CamSat_smRNA/Cs_smRNA_preps/GGACY_1/GGACY_1_short.fasta \
+> GGACY_1_short.cmscan
+
+cmscan --rfam --cut_ga --nohmmonly --tblout GGACY_1_100k.tblout --fmt 2 \
+--clanin Rfam.14.1.clanin Rfam.cm \
+/global/cscratch1/sd/grabowsp/CamSat_smRNA/Cs_smRNA_preps/GGACY_1/GGACY_1_100k.fasta \
+> GGACY_1_100k.cmscan
+
+* ways to make the output smaller:
+--textw 20
+* this makes all lines only 20 characters long - essentially, the output is 
+   unusable, but I don't think I'll use the  
+--noali
+* omits the alignement section - very vew of the reads are aligning to this
+  list, so may not make a big difference
 ```
 
+```
+cd /global/cscratch1/sd/grabowsp/CamSat_smRNA/infernal_filtering
 
+grep rRNA GGACY_1_100k.tblout > GGACY_1_100k.rRNA
+grep tRNA GGACY_1_100k.tblout > GGACY_1_100k.tRNA
+grep nucleolar GGACY_1_100k.tblout > GGACY_1_100k.snoRNA
+
+cat GGACY_1_100k.rRNA GGACY_1_100k.tRNA GGACY_1_100k.snoRNA > \
+GGACY_1_100k.comboRNA
+
+# the formatting is goofy on the output, so can't use "cut" to get the read
+#   names; can try it in R, but need to figure out what kind of delimiter to use
+
+
+/global/cscratch1/sd/grabowsp/CamSat_smRNA/infernal_filtering/GGACY_1_100k.comboRNA
+```

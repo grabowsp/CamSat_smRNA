@@ -45,6 +45,8 @@ libraries tied to a `LIB_CODE` are included in the prepping
 ```
 bash
 module load jamo
+module unload python/2.7-anaconda-2019.07
+module load python/3.7-anaconda-2019.07
 cd /global/cscratch1/sd/grabowsp/CamSat_smRNA/Cs_smRNA_preps
 for i in `cat ../Cs_smRNA_libs.txt`;
 #do jamo info library $i >> smRNA_jamo_lib_info.txt; done
@@ -162,7 +164,7 @@ cd /global/cscratch1/sd/grabowsp/CamSat_smRNA/Cs_smRNA_preps
 cd ./GGACY_1
 #python3 /global/dna/projectdirs/plant/geneAtlas/HAGSC_TOOLS/PREP_TESTING/splittingOPP.py \
 python3 /global/cscratch1/sd/grabowsp/CamSat_smRNA/Cs_smRNA_preps/smRNA_adjusted_splittingOPP.py \
-/global/cscratch1/sd/grabowsp/CamSat_smRNA/Cs_smRNA_preps GGACY_1 -q 100
+/global/cscratch1/sd/grabowsp/CamSat_smRNA/Cs_smRNA_preps GGACY_1 -p 15
 ```
 # worked, but does not submit jobs to cluster, only runs interactively
 ```
@@ -171,9 +173,9 @@ for i in GGAGB_1 GGAGC_1 GGAGG_1 GGAGH_1 GGAGN_1 GGAGU_1;
   do
   cd ./$i;
   python3 /global/cscratch1/sd/grabowsp/CamSat_smRNA/Cs_smRNA_preps/smRNA_adjusted_splittingOPP.py \
-  /global/cscratch1/sd/grabowsp/CamSat_smRNA/Cs_smRNA_preps $i -q 100;
+  /global/cscratch1/sd/grabowsp/CamSat_smRNA/Cs_smRNA_preps $i -p 15;
   cd ..;
-  sleep 5s;
+  sleep 1s;
   done
 ```
 ### Generate submit job to process rest of libraries
