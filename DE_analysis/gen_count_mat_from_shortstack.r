@@ -9,8 +9,8 @@
 args = commandArgs(trailingOnly = TRUE)
 
 ### INPUT FILES ###
-#count_file <- args[1]
-count_file <- '/global/cscratch1/sd/grabowsp/CamSat_smRNA/shortstack_results/HMT5vHMT102/Counts.txt'
+count_file <- args[1]
+#count_file <- '/global/cscratch1/sd/grabowsp/CamSat_smRNA/shortstack_results/HMT5vHMT102/Counts.txt'
 count_data <- read.table(count_file, header = F, stringsAsFactors = F,
   sep = '#')
 

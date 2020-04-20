@@ -213,6 +213,12 @@ cd /global/cscratch1/sd/grabowsp/CamSat_smRNA/shortstack_results
 for COMP in HMT5vHMT102 HMT5vHMT102_flowers HMT5vM3246 NR130vNS233 PR33vPS69;
   do
   cd $COMP;
-  Rscript
+  Rscript /global/homes/g/grabowsp/tools/CamSat_smRNA/DE_analysis/\
+gen_count_mat_from_shortstack.r \
+  /global/cscratch1/sd/grabowsp/CamSat_smRNA/shortstack_results/\
+$COMP'/Counts.txt';
+  cd ..;
+  done
+
 
 ```
