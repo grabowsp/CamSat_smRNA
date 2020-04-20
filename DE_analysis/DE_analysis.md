@@ -21,18 +21,23 @@
 * However, all 3 8171_8DAF reps have low correlation and are removed
 * Result is that can only use 10DAF and 12DAF in the analysis
 ### Files
-* Data directory
+* shortstack Data directory
   * `/global/cscratch1/sd/grabowsp/CamSat_smRNA/shortstack_results/MT5v8171/`
 * Count files for DE analysis
-  * `MT5v8171_tot_counts_full.txt`
+  * `SHORTSTACK_DATA_DIR/MT5v8171_tot_counts_full.txt`
     * all smRNA from shortstack
-  * `MT5v8171_tot_counts_good.txt`
+  * `SHORTSTACK_DATA_DIR/MT5v8171_tot_counts_good.txt`
     * only smRNA with genomic placement
 * Correlation heatmaps
-  * `MT5v8171smRNA_cor_heatmap.pdf`
+  * `SHORTSTACK_DATA_DIR/MT5v8171smRNA_cor_heatmap.pdf`
     * Full dataset
-  * `MT5v8171smRNA_cor_heatmap_good.pdf`
+  * `SHORTSTACK_DATA_DIR/MT5v8171smRNA_cor_heatmap_good.pdf`
+### Submit job
+```
+cd /global/cscratch1/sd/grabowsp/CamSat_smRNA/DESeq2_results
+sbatch MT5v8171_DESeq2_submit.sh
 
+```
 
 
 

@@ -203,4 +203,16 @@ dev.off()
 * GNXGT
   * is MT5_8DAF, highest cor is 0.89
 
+### Generate matrices for rest of the comparisons
+```
+module load python/3.7-anaconda-2019.07
+source activate R_analysis
 
+cd /global/cscratch1/sd/grabowsp/CamSat_smRNA/shortstack_results
+
+for COMP in HMT5vHMT102 HMT5vHMT102_flowers HMT5vM3246 NR130vNS233 PR33vPS69;
+  do
+  cd $COMP;
+  Rscript
+
+```
