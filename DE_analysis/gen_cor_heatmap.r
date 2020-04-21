@@ -26,8 +26,8 @@ comp_name <- args[3]
 
 fig_out <- paste(comp_name, '_smRNA_cor_heatmap.pdf', sep = '')
 
-fig_width <- args[4]
-fig_height <- args[5]
+hm_width <- as.numeric(args[4])
+hm_height <- as.numeric(args[5])
 
 ### LOAD PACKAGES ###
 library(reshape2)
