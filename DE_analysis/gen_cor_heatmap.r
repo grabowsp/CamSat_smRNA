@@ -16,9 +16,9 @@ counts_file <- args[1]
 counts_data <- read.table(counts_file, header = F, stringsAsFactors = F,
   sep = '\t')
 
-#info_file <- args[2]
-info_file <- paste('/global/cscratch1/sd/grabowsp/CamSat_smRNA/',
-  'smRNA_Library_Info_Sample_Info.tsv', sep = '')
+info_file <- args[2]
+#info_file <- paste('/global/cscratch1/sd/grabowsp/CamSat_smRNA/',
+#  'smRNA_Library_Info_Sample_Info.tsv', sep = '')
 samp_info <- read.table(info_file, header = T, stringsAsFactors = F, sep = '\t')
 
 ### SET OUTPUTS ###
@@ -50,7 +50,7 @@ colnames(full_counts_1) <- descr_names
 
 count_cor <- cor(x = full_counts_1, method = 'pearson')
 count_cor_round <- round(count_cor, digits = 2)
-count_cor_melt <- melt(cout_cor_round)
+count_cor_melt <- melt(count_cor_round)
 
 gg_full_heat <- ggplot(data = count_cor_melt, aes(x=Var1, y = Var2,
   fill = value)) +
