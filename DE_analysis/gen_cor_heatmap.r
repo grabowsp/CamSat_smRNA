@@ -2,9 +2,11 @@
 #   Counts.txt output from shortstack
 
 # Arguments:
-
-
-
+# [1]: (character) filename of the counts file to be used by DESeq2
+# [2]: (character) filename of the metadata file
+# [3]: (character) name of the sample comparison - for the output filename
+# [4]: (number) the width, in inches, for the heatmap
+# [5]: (number) the height, in inches, for the heatmap
 ########
 
 args = commandArgs(trailingOnly = TRUE)
