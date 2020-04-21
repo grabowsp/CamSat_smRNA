@@ -13,7 +13,7 @@ args = commandArgs(trailingOnly = TRUE)
 
 ### INPUT FILES ###
 counts_file <- args[1]
-counts_data <- read.table(counts_file, header = F, stringsAsFactors = F,
+counts_data <- read.table(counts_file, header = T, stringsAsFactors = F,
   sep = '\t')
 
 info_file <- args[2]
