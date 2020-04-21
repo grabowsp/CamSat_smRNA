@@ -64,7 +64,7 @@ gg_full_heat <- ggplot(data = count_cor_melt, aes(x=Var1, y = Var2,
   coord_fixed() +
   geom_text(aes(Var2, Var1, label = value), color = 'black', size = 6)
 
-pdf(fig_out, width = fig_width, height = fig_height)
+pdf(fig_out, width = hm_width, height = hm_height)
 gg_full_heat
 dev.off()
 
