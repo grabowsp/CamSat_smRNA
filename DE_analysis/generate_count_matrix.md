@@ -190,6 +190,7 @@ dev.off()
 * Based on correlations, CANNOT use 8171_8DAF because the 3 reps have low cor
   * means that 8DAF CANNOT be used for comparisons.
 #### Full Counts
+##### MT5 vs 8171
 * GNXGN
   * is 8171_12DAF, but highest cor with other reps is 0.86
 * GNXCZ
@@ -202,6 +203,8 @@ dev.off()
   * is MT5_10DAF, highest cor is 0.93
 * GNXGT
   * is MT5_8DAF, highest cor is 0.89
+
+
 
 ### Generate matrices for rest of the comparisons
 ```
@@ -220,5 +223,18 @@ $COMP'/Counts.txt';
   cd ..;
   done
 
+cd /global/cscratch1/sd/grabowsp/CamSat_smRNA/shortstack_results
+
+for COMP in HMT5vHMT102 HMT5vHMT102_flowers HMT5vM3246 NR130vNS233 PR33vPS69;
+  do
+  cd $COMP;
+  Rscript /global/homes/g/grabowsp/tools/CamSat_smRNA/DE_analysis/\
+gen_cor_heatmap.r \
+/global/cscratch1/sd/grabowsp/CamSat_smRNA/shortstack_results/\
+$COMP'/'$COMP'_tot_counts_full.txt' \
+/global/cscratch1/sd/grabowsp/CamSat_smRNA/smRNA_Library_Info_Sample_Info.tsv \
+$COMP 48 36;
+  cd ..;
+  done
 
 ```

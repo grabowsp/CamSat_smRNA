@@ -31,5 +31,26 @@
 * GNXGT
   * is MT5_8DAF, highest cor is 0.89
 
-
-
+## HMT5 vs HMT102
+### Raw data
+* 4 time points: 5DAF, 10DAF, 15DAF, 20DAF
+* 3 libraries/reps for each time point
+### Libraries to keep
+* HMT102_5DAF: GNXCH, GNXCN
+* HMT102_10DAF: GNXCP, GNXCS
+* HMT102_15DAF: All 3 libraries
+  * however, GNXCW is borderline: 0.95 and 0.93 with the reps
+* HMT102_20DAF: GNXCX, GNXCY
+* HMT5_10DAF: all 3 libraries
+* HMT5_15DAF: all 3 libraries
+* HMT5_20DAF: all 3 libraries
+### Bad libraries
+* GNXCO
+  * is HMT102_10DAF; highest cor is 0.82
+* GGACY
+  * is HMT102_20DAF; highest cor is 0.79
+  * was a 2-library sample - maybe re-try using just one library?
+* GNXCG
+  * is HMT102_5DAF; highest cor is 0.94
+* GNXBG
+  * is HMT5_5DAF; highest cor is 0.93
