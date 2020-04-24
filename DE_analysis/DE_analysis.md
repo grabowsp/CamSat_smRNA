@@ -52,7 +52,7 @@ sbatch MT5v8171_DESeq2_submit.sh
 * Part of:
   * `/global/cscratch1/sd/grabowsp/CamSat_smRNA/DESeq2_results/smRNA_DESeq2_submit.sh`
 
-## HMT5 vs HMT5102 Flowers
+## HMT5 vs HMT102 Flowers
 ### Overview
 * Single time point
 ### Files
@@ -63,6 +63,21 @@ sbatch MT5v8171_DESeq2_submit.sh
 * Correlation heatmap
   * `SHORTSTACK_DATA_DIR/HMT5vHMT102_flowers_smRNA_cor_heatmap.pdf`
 ### Submit job
+* Part of:
+  * `/global/cscratch1/sd/grabowsp/CamSat_smRNA/DESeq2_results/smRNA_DESeq2_submit.sh`
 
+## HMT5 vs M3246
+### Overview
+* 2 time points: 5DAF, 15DAF
+### Files
+* shortstack Data Directory
+  * `/global/cscratch1/sd/grabowsp/CamSat_smRNA/shortstack_results/HMT5vM3246`
+* Count file for DE analysis
+  * `SHORTSTACK_DATA_DIR/HMT5vM3246_tot_counts_full.txt`
+* Correlation heatmap
+  * `SHORTSTACK_DATA_DIR/HMT5vM3246_smRNA_cor_heatmap.pdf`
+### Submit job
+* Part of:
+  * `/global/cscratch1/sd/grabowsp/CamSat_smRNA/DESeq2_results/smRNA_DESeq2_submit.sh`
 
 

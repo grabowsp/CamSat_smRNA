@@ -73,7 +73,11 @@ rownames(counts_full_0) <- counts[,1]
 
 # remove bad libraries
 rm_lib_inds <- which(colnames(counts_full_0) %in% bad_libs[,1])
-counts_full <- counts_full_0[, -rm_lib_inds]
+if(length(rm_lib_inds) > 0){
+  counts_full <- counts_full_0[, -rm_lib_inds]
+} else{
+  counts_full <- counts_full_0
+}
 
 # Re-order metadata so samples are in same order as count data
 ph_order <- c()
