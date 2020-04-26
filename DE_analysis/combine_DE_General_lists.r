@@ -134,8 +134,10 @@ combo_df_1[, colnames(counts_ord)[-1]] <- NA
 combo_df_1[c_in_counts_inds, colnames(counts_ord)[-1]] <- counts_ord[
   counts_inds, -1]
 
+combo_df_2 <- combo_df_1[order(combo_df_1$deseq2_pval), ]
+
 ####
-write.table(combo_df_1, file = combo_out_file, quote = F, sep = '\t', 
+write.table(combo_df_2, file = combo_out_file, quote = F, sep = '\t', 
   row.names = F, col.names = T)
 
 quit(save = 'no')
