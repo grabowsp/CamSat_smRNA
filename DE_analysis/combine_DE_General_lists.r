@@ -6,8 +6,8 @@
 args = commandArgs(trailingOnly = T)
 
 ### LOAD DATA ###
-#comp_name <- args[1]
-comp_name <- 'MT5v8171'
+comp_name <- args[1]
+#comp_name <- 'MT5v8171'
 
 # load DESeq2 and maSigPro results
 deseq_res_dir <- '/global/cscratch1/sd/grabowsp/CamSat_smRNA/DESeq2_results/'
