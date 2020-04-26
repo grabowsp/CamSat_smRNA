@@ -6,7 +6,7 @@
 * Filter libraries based on correlation matrix
 * Run DESeq2
 * Run maSigPro, if applicable
-* Run splineTimeR if applicable
+* Decided not to include splineTimeR
 ### Important File locations
 * Information about libraries
   * `/global/cscratch1/sd/grabowsp/CamSat_smRNA/smRNA_Library_Info_Sample_Info.tsv`
@@ -16,6 +16,10 @@
   * manually add to this list when looking at correlations for comparisons
 * DESeq2 Result Directory
   * `/global/cscratch1/sd/grabowsp/CamSat_smRNA/DESeq2_results`
+* maSigPro Result Directory
+  * `/global/cscratch1/sd/grabowsp/CamSat_smRNA/maSigPro_results`
+* Combined List Directory
+  * `/global/cscratch1/sd/grabowsp/CamSat_smRNA/combo_DE_lists`
 
 ## MT5 vs 8171
 ### Overview
@@ -39,10 +43,21 @@
   * `DESEQ2_RES_DIR/MT5v8171_DESeq2_general_full_mat.txt`
   * `DESEQ2_RES_DIR/MT5v8171_DESeq2_TC_genes.txt`
   * `DESEQ2_RES_DIR/MT5v8171_DESeq2_TC_full_mat.txt`
-### Submit job
+* maSigPro Restuls
+  * `MASIG_RES_DIR/MT5v8171_General_DE_genes.txt`
+  * `MASIG_RES_DIR/MT5v8171_General_DE_full_mat.txt`
+  * `MASIG_RES_DIR/MT5v8171_TC_DE_genes.txt`
+  * `MASIG_RES_DIR/MT5v8171_TC_DE_full_mat.txt`
+### DESeq2 Job
+* because of Cori wait times, I ran the scripts during an interactive session
+* Part of:
+  * `/global/cscratch1/sd/grabowsp/CamSat_smRNA/DESeq2_results/smRNA_DESeq2_submit.sh`
+### maSigPro Job
+* Part of:
+  * `/global/cscratch1/sd/grabowsp/CamSat_smRNA/maSigPro_results/smRNA_maSigPro_submit.sh`
 ```
-cd /global/cscratch1/sd/grabowsp/CamSat_smRNA/DESeq2_results
-sbatch MT5v8171_DESeq2_submit.sh
+cd /global/cscratch1/sd/grabowsp/CamSat_smRNA/maSigPro_results
+sbatch smRNA_maSigPro_submit.sh
 ```
 
 ## HMT5 vs HMT102
@@ -60,9 +75,21 @@ sbatch MT5v8171_DESeq2_submit.sh
   * `DESEQ2_RES_DIR/HMT5vHMT102_DESeq2_general_full_mat.txt`
   * `DESEQ2_RES_DIR/HMT5vHMT102_DESeq2_TC_genes.txt`
   * `DESEQ2_RES_DIR/HMT5vHMT102_DESeq2_TC_full_mat.txt`
-### Submit job
+* maSigPro Restuls
+  * `MASIG_RES_DIR/HMT5vHMT102_General_DE_genes.txt`
+  * `MASIG_RES_DIR/HMT5vHMT102_General_DE_full_mat.txt`
+  * `MASIG_RES_DIR/HMT5vHMT102_TC_DE_genes.txt`
+  * `MASIG_RES_DIR/HMT5vHMT102_TC_DE_full_mat.txt`
+### DESeq2 job
 * Part of:
   * `/global/cscratch1/sd/grabowsp/CamSat_smRNA/DESeq2_results/smRNA_DESeq2_submit.sh`
+### maSigPro Job
+* Part of:
+  * `/global/cscratch1/sd/grabowsp/CamSat_smRNA/maSigPro_results/smRNA_maSigPro_submit.sh`
+```
+cd /global/cscratch1/sd/grabowsp/CamSat_smRNA/maSigPro_results
+sbatch smRNA_maSigPro_submit.sh
+```
 
 ## HMT5 vs HMT102 Flowers
 ### Overview
@@ -77,7 +104,7 @@ sbatch MT5v8171_DESeq2_submit.sh
 * DESeq2 Results
   * `DESEQ2_RES_DIR/HMT5vHMT102_flowers_DESeq2_general_genes.txt`
   * `DESEQ2_RES_DIR/HMT5vHMT102_flowers_DESeq2_general_full_mat.txt`
-### Submit job
+### DESeq2 job
 * Part of:
   * `/global/cscratch1/sd/grabowsp/CamSat_smRNA/DESeq2_results/smRNA_DESeq2_submit.sh`
 
@@ -96,9 +123,21 @@ sbatch MT5v8171_DESeq2_submit.sh
   * `DESEQ2_RES_DIR/HMT5vM3246_DESeq2_general_full_mat.txt`
   * `DESEQ2_RES_DIR/HMT5vM3246_DESeq2_TC_genes.txt`
   * `DESEQ2_RES_DIR/HMT5vM3246_DESeq2_TC_full_mat.txt`
-### Submit job
+* maSigPro Restuls
+  * `MASIG_RES_DIR/HMT5vM3246_General_DE_genes.txt`
+  * `MASIG_RES_DIR/HMT5vM3246_General_DE_full_mat.txt`
+  * `MASIG_RES_DIR/HMT5vM3246_TC_DE_genes.txt`
+  * `MASIG_RES_DIR/HMT5vM3246_TC_DE_full_mat.txt`
+### DESeq2 job
 * Part of:
   * `/global/cscratch1/sd/grabowsp/CamSat_smRNA/DESeq2_results/smRNA_DESeq2_submit.sh`
+### maSigPro Job
+* Part of:
+  * `/global/cscratch1/sd/grabowsp/CamSat_smRNA/maSigPro_results/smRNA_maSigPro_submit.sh`
+```
+cd /global/cscratch1/sd/grabowsp/CamSat_smRNA/maSigPro_results
+sbatch smRNA_maSigPro_submit.sh
+```
 
 ## PR33-R vs PS69-R
 ### Overview
@@ -114,7 +153,7 @@ sbatch MT5v8171_DESeq2_submit.sh
 * DESeq2 Results
   * `DESEQ2_RES_DIR/PR33_RvPS69_R_DESeq2_general_genes.txt`
   * `DESEQ2_RES_DIR/PR33_RvPS69_R_DESeq2_general_full_mat.txt`
-### Submit job
+### DESeq2 job
 * Part of:
   * `/global/cscratch1/sd/grabowsp/CamSat_smRNA/DESeq2_results/smRNA_DESeq2_submit.sh`
 
@@ -132,7 +171,7 @@ sbatch MT5v8171_DESeq2_submit.sh
 * DESeq2 Results
   * `DESEQ2_RES_DIR/PR33_ShvPS69_Sh_DESeq2_general_genes.txt`
   * `DESEQ2_RES_DIR/PR33_ShvPS69_Sh_DESeq2_general_full_mat.txt`
-### Submit job
+### DESeq2 job
 * Part of:
   * `/global/cscratch1/sd/grabowsp/CamSat_smRNA/DESeq2_results/smRNA_DESeq2_submit.sh`
 
@@ -151,9 +190,21 @@ sbatch MT5v8171_DESeq2_submit.sh
   * `DESEQ2_RES_DIR/NR130_RvNS233_R_DESeq2_general_full_mat.txt`
   * `DESEQ2_RES_DIR/NR130_RvNS233_R_DESeq2_TC_genes.txt`
   * `DESEQ2_RES_DIR/NR130_RvNS233_R_DESeq2_TC_full_mat.txt`
-### Submit job
+* maSigPro Restuls
+  * `MASIG_RES_DIR/NR130_RvNS233_R_General_DE_genes.txt`
+  * `MASIG_RES_DIR/NR130_RvNS233_R_General_DE_full_mat.txt`
+  * `MASIG_RES_DIR/NR130_RvNS233_R_TC_DE_genes.txt`
+  * `MASIG_RES_DIR/NR130_RvNS233_R_TC_DE_full_mat.txt`
+### DESeq2 job
 * Part of:
   * `/global/cscratch1/sd/grabowsp/CamSat_smRNA/DESeq2_results/smRNA_DESeq2_submit.sh`
+### maSigPro Job
+* Part of:
+  * `/global/cscratch1/sd/grabowsp/CamSat_smRNA/maSigPro_results/smRNA_maSigPro_submit.sh`
+```
+cd /global/cscratch1/sd/grabowsp/CamSat_smRNA/maSigPro_results
+sbatch smRNA_maSigPro_submit.sh
+```
 
 ## NR130-Sh vs NS233-Sh
 ### Overview
@@ -170,10 +221,20 @@ sbatch MT5v8171_DESeq2_submit.sh
   * `DESEQ2_RES_DIR/NR130_ShvNS233_Sh_DESeq2_general_full_mat.txt`
   * `DESEQ2_RES_DIR/NR130_ShvNS233_Sh_DESeq2_TC_genes.txt`
   * `DESEQ2_RES_DIR/NR130_ShvNS233_Sh_DESeq2_TC_full_mat.txt`
-### Submit job
+* maSigPro Restuls
+  * `MASIG_RES_DIR/NR130_ShvNS233_Sh_General_DE_genes.txt`
+  * `MASIG_RES_DIR/NR130_ShvNS233_Sh_General_DE_full_mat.txt`
+  * `MASIG_RES_DIR/NR130_ShvNS233_Sh_TC_DE_genes.txt`
+  * `MASIG_RES_DIR/NR130_ShvNS233_Sh_TC_DE_full_mat.txt`
+### DESeq2 job
 * Part of:
   * `/global/cscratch1/sd/grabowsp/CamSat_smRNA/DESeq2_results/smRNA_DESeq2_submit.sh`
-
-
+### maSigPro Job
+* Part of:
+  * `/global/cscratch1/sd/grabowsp/CamSat_smRNA/maSigPro_results/smRNA_maSigPro_submit.sh`
+```
+cd /global/cscratch1/sd/grabowsp/CamSat_smRNA/maSigPro_results
+sbatch smRNA_maSigPro_submit.sh
+```
 
 

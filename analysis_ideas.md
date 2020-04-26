@@ -12,7 +12,7 @@
   * miRDeep-P
   * Compare to miRBase
 * Compare DE results to miRNA results
-
+* BLAT results vs miRBase mature.fa file
 
 ## Using ShortStack
 * get from conda
