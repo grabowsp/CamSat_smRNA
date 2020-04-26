@@ -53,7 +53,7 @@ lib_info <- read.table(lib_info_file, header = T, stringsAsFactors = F,
 
 ### SET OUTPUT ###
 combo_list_dir <- '/global/cscratch1/sd/grabowsp/CamSat_smRNA/combo_DE_lists/'
-combo_out_suf <- '_General_DE_smRNAs.txt'
+combo_out_suf <- '_General_DE_smRNAs_List1.txt'
 combo_out_file <- paste(combo_list_dir, comp_name, combo_out_suf, sep = '')
 
 ####################
