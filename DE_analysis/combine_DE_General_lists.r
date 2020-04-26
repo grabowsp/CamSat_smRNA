@@ -128,7 +128,8 @@ counts_inds <- which(counts_ord$GeneID %in% combo_df$locus_name)
 c_in_counts_inds <- which(combo_df$locus_name %in% counts_ord$GeneID)
 
 combo_df_1 <- combo_df[, c('locus_name', 'chr', 'start_pos', 'end_pos',
-  'locus_length', 'n_geno_hits', 'deseq2_pval', 'masigpro_pval', 'maj_seq')]
+  'locus_length', 'n_geno_hits', 'deseq2_pval', 'masigpro_pval', 'maj_seq',
+  'shortstack_miRNA')]
 
 combo_df_1[, colnames(counts_ord)[-1]] <- NA
 combo_df_1[c_in_counts_inds, colnames(counts_ord)[-1]] <- counts_ord[
