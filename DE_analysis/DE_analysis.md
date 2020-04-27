@@ -50,6 +50,7 @@
   * `MASIG_RES_DIR/MT5v8171_TC_DE_full_mat.txt`
 * Combined Results
   * `COMBO_DIR/MT5v8171_General_DE_smRNAs_List1.txt`
+  * `COMBO_DIR/MT5v8171_TC_DE_smRNAs_List2.txt`
 ### DESeq2 Job
 * because of Cori wait times, I ran the scripts during an interactive session
 * Part of:
@@ -66,10 +67,18 @@ sbatch smRNA_maSigPro_submit.sh
 ```
 module load python/3.7-anaconda-2019.07
 source activate R_analysis
+
 Rscript \
 /global/homes/g/grabowsp/tools/CamSat_smRNA/DE_analysis/\
 combine_DE_General_lists.r \
 MT5v8171
+
+Rscript \
+/global/homes/g/grabowsp/tools/CamSat_smRNA/DE_analysis/\
+combine_DE_TC_lists.r \
+MT5v8171
+
+
 ```
 
 ## HMT5 vs HMT102
