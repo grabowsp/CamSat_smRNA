@@ -42,6 +42,7 @@ deseq2_pval	The adjusted p-value from the DESeq2 model of
 			time point
 masigpro_pval	The p-value from control treatment alternate treatment portion
 			of the module used in maSigPro
+		  	All NA if was not time course experiment
 maj_seq		The sequence of the most abundant RNA at the locus; if locus 
 			is unmapped, then it is simply the sequencing read
 			sequence

@@ -1,0 +1,82 @@
+Explanation of the contents of the "Full_DE...List2" file
+
+This list contains information about smRNAs that showed differential DE 
+	between two individuals/plants, both General/overall DE and
+	differential response during a time course experiment
+
+The smRNA loci and readcounts were identified and generated in ShortStack and 
+	then analysed using DESeq2 and maSigPro 
+
+The list contains smRNAs identified as having significant DE in at least one
+	DE analysis approach:
+	  1) General plant-level DE with DESeq2
+	  2) Differential response to time with DESeq2
+	  3) General plant-level DE with maSigPro
+	  4) Differential response to time with maSigPro
+  For General DE using DESeq2, these are smRNA with significant DE 
+  	(using adjusted pvalues)
+  For Time-course DE using DESeq2, these are smRNA with significant DE
+	using the LRT test, with the full model: "~ Treatment + Time + 
+	Treatment:Time" model and reduced model: "~ Treatment + Time";
+    Adjusted pval based on the affect of removing the "Treatment:Time"
+	term; can potentially inflate the number of DE transcripts
+  For General DE using maSigPro, these are the smRNA that show significant DE 
+	in the "Control vs Alternate" portion of the model
+  For Time-course DE using maSigPro, these are the smRNA that show significant 
+	changes in DE when removing the TreatmentxTime portion from the 
+	regression model
+
+  p-value cutoff was 0.5 for both DESeq2 and maSigPro
+  NA p-value means that smRNA did not show significant DE for that analysis
+
+Explanation of columns:
+
+locus_name	Arbitrary name of the locus as assigned by ShortStack
+		  Loci that are mapped to a unique positon have names starting
+			with "Cluster_"
+		  For unmapped smRNAs, locus_name is simply the smRNA sequence
+chr		Chromosome/scaffold name to where locus is mapped; if locus
+			is unmapped, then is NA
+start_pos	The starting position for the locus; if locus is unmapped, then
+			is NA
+end_pos		The ending position for the locus; if locus is unmapped, then
+			is NA
+locus_length	The length of the locus; if locus is unmapped, then is the 
+			length of the sequence
+n_geno_hits	The number of positions where the locus was assigned during
+			the mapping portion of ShortStack
+		  If 0, then smRNA is most likely from a position(s) that's not
+			in the current genome assembly
+		  Mapped loci should have value of 1
+deseq2_gen_pval	The adjusted p-value from the DESeq2 model of
+                        "~ Time + Treatment" or "~ Treatment" of only a single
+                        time point
+deseq2_tc_pval	The adjusted p-value from the DESeq2 LRT model comparing the
+			full model; "~ Treatment + Time + Treatment:Time" to 
+			the reduced model: "~ Treatment + Time" 
+masigpro_tc_pval   The p-value from comparing the full regression model to 
+			regression with the Treatment x Time portion removed
+masigpro_gen_pval   The p-value from control treatment alternate treatment 
+			portion of the module used in maSigPro
+maj_seq		The sequence of the most abundant RNA at the locus; if locus 
+			is unmapped, then it is simply the sequencing read
+			sequence
+shortstack_miRNA	Whether the locus was identified as a potential miRNA
+				by ShortStack
+			  This method used by ShortStack is admitedly
+				conservative and will generate false negatives
+			  Only mapped loci are analyzed; unnapped loci get NA
+			  A value of 'Y' means its a potential miRNA
+			  A value beginning with 'N' means that it does not 
+				pass the criteria used by ShortStack to 
+				identify novel miRNAs; the meaning of each 
+				of these values is in the ShortStack
+				documentation
+
+Remaining Columns are the raw read counts for each locus
+	Column names are in the form of "Treatment_Time_Library" where
+	"Treatment" is the individual/plant name, ex MT5
+	"Time" is the time point for the sample, ex 10DAF
+	"Library" is the library code for the smRNA library used in the
+		analysis
+		
