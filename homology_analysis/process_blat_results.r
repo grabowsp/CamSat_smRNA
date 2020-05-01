@@ -56,10 +56,10 @@ blat_head <- gsub(' ', '', c(paste(unlist(blat_res_head_1[[1]])[1:18],
 ### SET OUTPUT ###
 
 combo_hit_file_out <- paste(data_dir, comp, '_', list_type, 
-  '_DE_combo_miRNA_db_hits.txt')
+  '_DE_combo_miRNA_db_hits.txt', sep = '')
 
 miRNA_summ_file_out <- paste(data_dir, comp, '_', list_type, 
-  '_DE_miRNA_db_summary.txt')
+  '_DE_miRNA_db_summary.txt', sep = '')
 
 ################
 colnames(pmrd_mature_res) <- blat_head
