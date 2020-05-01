@@ -104,6 +104,10 @@ MT5v8171
   * `MASIG_RES_DIR/HMT5vHMT102_General_DE_full_mat.txt`
   * `MASIG_RES_DIR/HMT5vHMT102_TC_DE_genes.txt`
   * `MASIG_RES_DIR/HMT5vHMT102_TC_DE_full_mat.txt`
+* Combined Results
+  * `COMBO_DIR/HMT5vHMT102_General_DE_smRNAs_List1.txt`
+  * `COMBO_DIR/HMT5vHMT102_TC_DE_smRNAs_List2.txt`
+  * `COMBO_DIR/HMT5vHMT102_Full_DE_smRNAs_List3.txt`
 ### DESeq2 job
 * Part of:
   * `/global/cscratch1/sd/grabowsp/CamSat_smRNA/DESeq2_results/smRNA_DESeq2_submit.sh`
@@ -135,7 +139,6 @@ combine_DE_all_lists.r \
 HMT5vHMT102
 ```
 
-
 ## HMT5 vs HMT102 Flowers
 ### Overview
 * Single time point
@@ -149,9 +152,21 @@ HMT5vHMT102
 * DESeq2 Results
   * `DESEQ2_RES_DIR/HMT5vHMT102_flowers_DESeq2_general_genes.txt`
   * `DESEQ2_RES_DIR/HMT5vHMT102_flowers_DESeq2_general_full_mat.txt`
+* Processed List
+  * `COMBO_DIR/HMT5vHMT102_flowers_General_DE_smRNAs_List1.txt`
 ### DESeq2 job
 * Part of:
   * `/global/cscratch1/sd/grabowsp/CamSat_smRNA/DESeq2_results/smRNA_DESeq2_submit.sh`
+### Generate Final List
+```
+module load python/3.7-anaconda-2019.07
+source activate R_analysis
+
+Rscript \
+/global/homes/g/grabowsp/tools/CamSat_smRNA/DE_analysis/\
+make_noTC_DE_General_list.r \
+HMT5vHMT102_flowers
+```
 
 ## HMT5 vs M3246
 ### Overview
@@ -173,6 +188,10 @@ HMT5vHMT102
   * `MASIG_RES_DIR/HMT5vM3246_General_DE_full_mat.txt`
   * `MASIG_RES_DIR/HMT5vM3246_TC_DE_genes.txt`
   * `MASIG_RES_DIR/HMT5vM3246_TC_DE_full_mat.txt`
+* Combined Results
+  * `COMBO_DIR/HMT5vM3246_General_DE_smRNAs_List1.txt`
+  * `COMBO_DIR/HMT5vM3246_TC_DE_smRNAs_List2.txt`
+  * `COMBO_DIR/HMT5vM3246_Full_DE_smRNAs_List3.txt`
 ### DESeq2 job
 * Part of:
   * `/global/cscratch1/sd/grabowsp/CamSat_smRNA/DESeq2_results/smRNA_DESeq2_submit.sh`
@@ -182,6 +201,26 @@ HMT5vHMT102
 ```
 cd /global/cscratch1/sd/grabowsp/CamSat_smRNA/maSigPro_results
 sbatch smRNA_maSigPro_submit.sh
+```
+### Generate Combined Lists
+```
+module load python/3.7-anaconda-2019.07
+source activate R_analysis
+
+Rscript \
+/global/homes/g/grabowsp/tools/CamSat_smRNA/DE_analysis/\
+combine_DE_General_lists.r \
+HMT5vM3246
+
+Rscript \
+/global/homes/g/grabowsp/tools/CamSat_smRNA/DE_analysis/\
+combine_DE_TC_lists.r \
+HMT5vM3246
+
+Rscript \
+/global/homes/g/grabowsp/tools/CamSat_smRNA/DE_analysis/\
+combine_DE_all_lists.r \
+HMT5vM3246
 ```
 
 ## PR33-R vs PS69-R
@@ -198,9 +237,22 @@ sbatch smRNA_maSigPro_submit.sh
 * DESeq2 Results
   * `DESEQ2_RES_DIR/PR33_RvPS69_R_DESeq2_general_genes.txt`
   * `DESEQ2_RES_DIR/PR33_RvPS69_R_DESeq2_general_full_mat.txt`
+* Processed List
+  * `COMBO_DIR/PR33_RvPS69_R_DE_smRNAs_List1.txt`
 ### DESeq2 job
 * Part of:
   * `/global/cscratch1/sd/grabowsp/CamSat_smRNA/DESeq2_results/smRNA_DESeq2_submit.sh`
+### Generate Final List
+```
+module load python/3.7-anaconda-2019.07
+source activate R_analysis
+
+# I had to manually run and adjust the following script to load and include
+#   the correct counts
+/global/homes/g/grabowsp/tools/CamSat_smRNA/DE_analysis/\
+make_noTC_DE_General_list.r \
+PR33_RvPS69_R
+```
 
 ## PR33-Sh vs PS69-Sh
 ### Overview
@@ -216,9 +268,22 @@ sbatch smRNA_maSigPro_submit.sh
 * DESeq2 Results
   * `DESEQ2_RES_DIR/PR33_ShvPS69_Sh_DESeq2_general_genes.txt`
   * `DESEQ2_RES_DIR/PR33_ShvPS69_Sh_DESeq2_general_full_mat.txt`
+* Processed List
+  * `COMBO_DIR/PR33_ShvPS69_Sh_DE_smRNAs_List1.txt`
 ### DESeq2 job
 * Part of:
   * `/global/cscratch1/sd/grabowsp/CamSat_smRNA/DESeq2_results/smRNA_DESeq2_submit.sh`
+### Generate Final List
+```
+module load python/3.7-anaconda-2019.07
+source activate R_analysis
+
+# I had to manually run and adjust the following script to load and include
+#   the correct counts
+/global/homes/g/grabowsp/tools/CamSat_smRNA/DE_analysis/\
+make_noTC_DE_General_list.r \
+PR33_ShvPS69_Sh
+```
 
 ## NR130-R vs NS233-R
 ### Overview
@@ -240,6 +305,10 @@ sbatch smRNA_maSigPro_submit.sh
   * `MASIG_RES_DIR/NR130_RvNS233_R_General_DE_full_mat.txt`
   * `MASIG_RES_DIR/NR130_RvNS233_R_TC_DE_genes.txt`
   * `MASIG_RES_DIR/NR130_RvNS233_R_TC_DE_full_mat.txt`
+* Combined Results
+  * `COMBO_DIR/NR130_RvNS233_R_General_DE_smRNAs_List1.txt`
+  * `COMBO_DIR/NR130_RvNS233_R_TC_DE_smRNAs_List2.txt`
+  * `COMBO_DIR/NR130_RvNS233_R_Full_DE_smRNAs_List3.txt`
 ### DESeq2 job
 * Part of:
   * `/global/cscratch1/sd/grabowsp/CamSat_smRNA/DESeq2_results/smRNA_DESeq2_submit.sh`
@@ -249,6 +318,37 @@ sbatch smRNA_maSigPro_submit.sh
 ```
 cd /global/cscratch1/sd/grabowsp/CamSat_smRNA/maSigPro_results
 sbatch smRNA_maSigPro_submit.sh
+```
+### Generate Combined Lists
+* I had to run these scripts interactively because R and Sh samples were run
+together in shortstack
+```
+module load python/3.7-anaconda-2019.07
+source activate R_analysis
+
+# Adjustements in R
+comp_name <- 'NR130_RvNS233_R'
+
+shortstack_res_file <- paste(shortstack_dir, 'NR130vNS233', '/Results.txt',
+  sep = '')
+
+shortstack_unplaced_file <- paste(shortstack_dir, 'NR130vNS233', 
+  '/Unplaced.txt', sep = '')
+
+count_file <- paste(shortstack_dir, 'NR130vNS233', '/', 'NR130vNS233', 
+  '_tot_counts_full.txt', sep = '')
+
+count_col_keep <- grep('-R', colnames(counts_ord))
+counts_ord <- counts_ord[ , c(1, count_col_keep)]
+
+/global/homes/g/grabowsp/tools/CamSat_smRNA/DE_analysis/\
+combine_DE_General_lists.r
+
+/global/homes/g/grabowsp/tools/CamSat_smRNA/DE_analysis/\
+combine_DE_TC_lists.r
+
+/global/homes/g/grabowsp/tools/CamSat_smRNA/DE_analysis/\
+combine_DE_all_lists.r
 ```
 
 ## NR130-Sh vs NS233-Sh
@@ -271,6 +371,10 @@ sbatch smRNA_maSigPro_submit.sh
   * `MASIG_RES_DIR/NR130_ShvNS233_Sh_General_DE_full_mat.txt`
   * `MASIG_RES_DIR/NR130_ShvNS233_Sh_TC_DE_genes.txt`
   * `MASIG_RES_DIR/NR130_ShvNS233_Sh_TC_DE_full_mat.txt`
+* Combined Results
+  * `COMBO_DIR/NR130_ShvNS233_Sh_General_DE_smRNAs_List1.txt`
+  * `COMBO_DIR/NR130_ShvNS233_Sh_TC_DE_smRNAs_List2.txt`
+  * `COMBO_DIR/NR130_ShvNS233_Sh_Full_DE_smRNAs_List3.txt`
 ### DESeq2 job
 * Part of:
   * `/global/cscratch1/sd/grabowsp/CamSat_smRNA/DESeq2_results/smRNA_DESeq2_submit.sh`
@@ -281,5 +385,43 @@ sbatch smRNA_maSigPro_submit.sh
 cd /global/cscratch1/sd/grabowsp/CamSat_smRNA/maSigPro_results
 sbatch smRNA_maSigPro_submit.sh
 ```
+### Generate Combined Lists
+* I had to run these scripts interactively because R and Sh samples were run
+together in shortstack
+```
+module load python/3.7-anaconda-2019.07
+source activate R_analysis
+
+# Adjustements in R
+comp_name <- 'NR130_ShvNS233_Sh'
+
+shortstack_dir <- '/global/cscratch1/sd/grabowsp/CamSat_smRNA/shortstack_results/'
+shortstack_res_file <- paste(shortstack_dir, 'NR130vNS233', '/Results.txt',
+  sep = '')
+shortstack_res_0 <- read.table(shortstack_res_file, header = T,
+  stringsAsFactors = F, sep = '\t', comment.char = '@')
+
+shortstack_unplaced_file <- paste(shortstack_dir, 'NR130vNS233', 
+  '/Unplaced.txt', sep = '')
+shortstack_unplaced_0 <- read.table(shortstack_unplaced_file, header = T,
+  stringsAsFactors = F, sep = '\t', comment.char = '@')
+
+count_file <- paste(shortstack_dir, 'NR130vNS233', '/', 'NR130vNS233', 
+  '_tot_counts_full.txt', sep = '')
+counts_0 <- read.table(count_file, header = T, stringsAsFactors = F, sep = '\t')
+
+count_col_keep <- grep('-Sh', colnames(counts_ord))
+counts_ord <- counts_ord[ , c(1, count_col_keep)]
+
+/global/homes/g/grabowsp/tools/CamSat_smRNA/DE_analysis/\
+combine_DE_General_lists.r
+
+/global/homes/g/grabowsp/tools/CamSat_smRNA/DE_analysis/\
+combine_DE_TC_lists.r
+
+/global/homes/g/grabowsp/tools/CamSat_smRNA/DE_analysis/\
+combine_DE_all_lists.r
+```
+
 
 
