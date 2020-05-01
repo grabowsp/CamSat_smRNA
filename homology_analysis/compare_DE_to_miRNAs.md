@@ -9,6 +9,7 @@
   * PMRD
     * `http://structuralbiology.cau.edu.cn/PNRD/index.php`
 * use BLAT to compare DE sequences to know plant miRNAs
+* consolidate BLAT results
 ### File Locations
 * location of combined DE summary tables
   * `/global/cscratch1/sd/grabowsp/CamSat_smRNA/combo_DE_lists`
@@ -156,29 +157,25 @@ $TMP_FN'_miRBase_hairpin.psl';
   done
 ```
 
-## Edit BLAT output
-* PMRD mature miRNA file
+## Consolidate BLAT results
 ```
-#blat_file <- '/global/cscratch1/sd/grabowsp/CamSat_smRNA/miR_blat_results/HMT5vHMT102_General_mature.psl'
+module load python/3.7-anaconda-2019.07
+source activate R_analysis
 
-blat_file <- '/global/cscratch1/sd/grabowsp/CamSat_smRNA/miR_blat_results/HMT5vHMT102_General_DE_smRNA_miRBase_mature.psl'
+cd /global/cscratch1/sd/grabowsp/CamSat_smRNA/DE_res_fastas
 
-blat_res <- read.table(blat_file, header = F, skip = 6, 
-  stringsAsFactors = F, sep = '\t')
+for COMPS in HMT5vHMT102 HMT5vM3246 MT5v8171 NR130_RvNS233_R \
+NR130_ShvNS233_Sh;
+do
+  for LT in General TC Full;
+  do
+    Rscript /global/homes/g/grabowsp/tools/CamSat_smRNA/homology_analysis/\
+generate_fasta_locus_files.r \
+    $COMPS $LT;
+    done
+  done
 
-blat_res_head <- system(paste('head -4 ', blat_file, ' | tail -2'), 
-  intern = T)
-
-blat_res_head_1 <- strsplit(blat_res_head, split = '\t')
-
-blat_head <- gsub(' ', '', c(paste(unlist(blat_res_head_1[[1]])[1:18], 
-  unlist(blat_res_head_1[[2]]), sep = ''), 
-  unlist(blat_res_head_1[[1]])[19:21]))
-
-colnames(blat_res) <- blat_head
-
-good_hit_inds <- which(blat_res$match/blat_res$Tsize >= 0.8)
 
 ```
-* for 'mature', I think I'll use match=18 (or 17) as cutoff
+
 
