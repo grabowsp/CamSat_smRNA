@@ -22,7 +22,7 @@ comp <- args[1]
 #comp <- 'HMT5vHMT102'
 
 list_type <- args[2]
-#list_type <- 'General'
+#list_type <- 'TC'
 
 pmrd_mature_file <- paste(data_dir, comp, '_', list_type, 
   '_DE_smRNA_mature.psl', sep = '')
@@ -71,6 +71,8 @@ pmrd_mature_res$db <- 'pmrd_mature'
 pmrd_sl_res$db <- 'pmrd_stemloop'
 miR_mature_res$db <- 'miRBase_mature'
 miR_hp_res$db <- 'miRBase_hairpin'
+
+# pmrd_mature_res <- pmrd_sl_res[c(), ]
 
 pmrd_m_good_hits <- which(pmrd_mature_res$match/pmrd_mature_res$Tsize >= 0.8)
 miR_m_good_hits <- which(miR_mature_res$match/miR_mature_res$Tsize >= 0.8)
