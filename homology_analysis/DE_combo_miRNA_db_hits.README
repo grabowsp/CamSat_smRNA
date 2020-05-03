@@ -1,0 +1,36 @@
+Explanation of contents of '...DE_combo_miRNA_db_hits.txt' file
+
+These file contains information about DE smRNA loci that show sufficient
+	homology to miRNAs in miRBase and/or PMRD as determined using BLAT
+  They must have 80+% homology to an entire mature miRNA
+    and/or 
+    80+% homology across the smRNA read to a stem loop/hairpin miRNA sequence
+
+Explanation of Columns:
+match		Number of positions in the test-stretch of the smRNA with 
+			homology to the miRNA in the database
+mis-match	Number of positions in the test-stretch of the smRNA that
+			are mismatches to the miRNA in the database
+Qname		Name of the smRNA locus identified in the DE analysis
+		  The names start with 'locus_' which is not part of the 
+			name in the DE tables, remove the prefix to have
+			the same locus names
+Qsize		Size of the smRNA locus, is frequently larger than the 
+			test-stretch that shows homology to the miRNA
+Tname		Name of the miRNA to which the locus shows sufficient
+			homology
+		  Generally starts with a Species acronym (ex: zma) and then
+			the miRNA name
+		  The same miRNA can show up more than once for the same smRNA 
+			locus if there are hits from different miRNA databases
+Tsize		Size of the miRNA sequence in the database
+		  Mature miRNA sequences are usually 20-24 bp
+		  Hairpin/stem loop sequences are generally much longer than
+			the mature sequence
+db		The database where the miRNA came from.
+		  pmrd_mature = mature miRNA sequences from PMRD
+		  pmrd_sl = stem loop miRNA sequences from PMRD
+		  miRBase_mature = mature miRNA sequences from miRBase
+		  miRBase_hp = hairpin miRNA sequences from miRBase
+
+

@@ -158,11 +158,14 @@ $TMP_FN'_miRBase_hairpin.psl';
 ```
 
 ## Consolidate BLAT results
+* Some notes:
+  * HMT5vHMT102 TC (time course) has NO good database hits
+
 ```
 module load python/3.7-anaconda-2019.07
 source activate R_analysis
 
-cd /global/cscratch1/sd/grabowsp/CamSat_smRNA/DE_res_fastas
+cd /global/cscratch1/sd/grabowsp/CamSat_smRNA/miR_blat_results
 
 for COMPS in HMT5vHMT102 HMT5vM3246 MT5v8171 NR130_RvNS233_R \
 NR130_ShvNS233_Sh;
@@ -170,12 +173,43 @@ do
   for LT in General TC Full;
   do
     Rscript /global/homes/g/grabowsp/tools/CamSat_smRNA/homology_analysis/\
-generate_fasta_locus_files.r \
+process_blat_results.r \
     $COMPS $LT;
     done
   done
 
-
+for COMPS in HMT5vHMT102_flowers PR33_RvPS69_R PR33_ShvPS69_Sh;
+do
+  Rscript /global/homes/g/grabowsp/tools/CamSat_smRNA/homology_analysis/\
+process_blat_results.r \
+  $COMPS General;
+  done
 ```
 
+## Connect BLAT results to DE result tables
+```
+module load python/3.7-anaconda-2019.07
+source activate R_analysis
+
+cd /global/cscratch1/sd/grabowsp/CamSat_smRNA/combo_DE_lists/
+
+for COMPS in HMT5vHMT102 HMT5vM3246 MT5v8171 NR130_RvNS233_R \
+NR130_ShvNS233_Sh;
+do
+  for LT in General TC Full;
+  do
+    Rscript /global/homes/g/grabowsp/tools/CamSat_smRNA/homology_analysis/\
+connect_blat_to_res_tables.r \
+    $COMPS $LT;
+    done
+  done
+
+for COMPS in HMT5vHMT102_flowers PR33_RvPS69_R PR33_ShvPS69_Sh;
+do
+  Rscript /global/homes/g/grabowsp/tools/CamSat_smRNA/homology_analysis/\
+connect_blat_to_res_tables.r \
+  $COMPS General;
+  done
+
+```
 
